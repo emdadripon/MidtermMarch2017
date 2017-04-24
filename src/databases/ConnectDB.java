@@ -2,20 +2,18 @@ package databases;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.connection.*;
 import org.bson.Document;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
-import java.sql.Connection;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by mrahman on 04/22/17.
@@ -246,7 +244,7 @@ public class ConnectDB {
     }
 
     public static void main(String[] args)throws IOException, SQLException, ClassNotFoundException {
-        /*
+
         insertProfileToMySql("profile","name", "id");
         List<User> list = readFromMySql();
         for(User user:list){
@@ -254,7 +252,7 @@ public class ConnectDB {
         }
         String message = insertToMongoDB(new User("Huda ParkingIssue", 3599));
         List<User> user = readFromMongoDB();
-        */
+
     }
 
 }

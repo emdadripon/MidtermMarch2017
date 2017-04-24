@@ -27,15 +27,22 @@ public class Numbers {
 		//Selection Sort
 		Sort algo = new Sort();
 		algo.selectionSort(num);
+        Sort.printSortedArray(num);
 		long selectionSortExecutionTime = algo.executionTime;
 		System.out.println("Total Execution Time of "+ num.length + " numbers in Selection Sort take: " + selectionSortExecutionTime + " milli sec");
 
 		//Insertion Sort
 		algo.insertionSort(num);
+		Sort.printSortedArray(num);
 		long insertionSortExecutionTime = algo.executionTime;
 		System.out.println("Total Execution Time of " + num.length + " numbers in Insertion Sort take: " + insertionSortExecutionTime + " milli sec");
 
 		//Continue for rest of the Sorting Algorithm....
+		algo.bubbleSort(num);
+		Sort.printSortedArray(num);
+		long bubbleSortExecutionTime = algo.executionTime;
+		System.out.println("Total Execution Time of "+ num.length + " numbers in Bubble Sort take: " + bubbleSortExecutionTime + " milli sec");
+
 
 	}
 

@@ -1,5 +1,9 @@
 package datastructure;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Scanner;
+
 public class UseLinkedList {
 
 	public static void main(String[] args) {
@@ -8,7 +12,36 @@ public class UseLinkedList {
 		 * Use For Each loop and while loop with Iterator to retrieve data.
 		 * 
 		 */
+		LinkedList<String> list = new LinkedList<String>();
+		System.out.println("Please enter numeric number size of list");
 
+		Scanner sc = new Scanner(System.in);
+		int NumberOfInput = sc.nextInt();
+
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please enter elements of list");
+		for(int i = 0; i<NumberOfInput; i++){
+			String name  = input.nextLine();
+			list.add(name);
+		}
+		System.out.println("Retriving elements from LinkedList");
+		Iterator it = list.iterator();
+		while(it.hasNext()){
+			System.out.println(it.next());
+		}
+		try{
+			if(sc!=null){
+				sc.close();
+			}
+			if(input!=null){
+				sc.close();
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		System.out.println("Retriving elements by enhance for loop");
+		for(String course:list){
+			System.out.println(course);
+		}
 	}
-
 }
