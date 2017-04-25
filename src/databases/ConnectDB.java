@@ -50,7 +50,7 @@ public class ConnectDB {
     public static MongoDatabase connectToMongoDB() {
         MongoClient mongoClient = new MongoClient();
         mongoDatabase = mongoClient.getDatabase("students");
-        System.out.println("Database Connected");
+        System.out.println("Mongo Database Connected");
 
         return mongoDatabase;
     }
@@ -186,7 +186,7 @@ public class ConnectDB {
         }
     }
 
-    public static String insertToMongoDB(User user){
+    public  static String insertToMongoDB(User user){
         String profile = user.getName();
         MongoDatabase mongoDatabase = connectToMongoDB();
         MongoCollection<Document> collection = mongoDatabase.getCollection("profile");

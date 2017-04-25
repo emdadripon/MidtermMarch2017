@@ -7,6 +7,7 @@ import java.util.Iterator;
 
 public class UseArrayList {
 
+
 	public static void main(String[] args) {
 		/*
 		 * Demonstrate how to use ArrayList that includes add,peek,remove,retrieve elements.
@@ -26,8 +27,9 @@ public class UseArrayList {
 		while(it.hasNext()){
 			System.out.println(it.next());
 		}
-		ConnectDB connectDB = new ConnectDB();
 
+		ConnectDB.connectToMongoDB();
+        //ConnectDB.insertToMongoDB();
 	}
 
 }
