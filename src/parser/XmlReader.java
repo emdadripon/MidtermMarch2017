@@ -20,7 +20,7 @@ import java.util.List;
 
 public class XmlReader {
 	
-	public List<Student> parseData(String tagName,String path) throws ParserConfigurationException, SAXException, IOException{
+	public List<Student> parseData(String tagName, String path) throws ParserConfigurationException, SAXException, IOException{
 		
 	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 	DocumentBuilder builder = factory.newDocumentBuilder();

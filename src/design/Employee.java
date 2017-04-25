@@ -21,7 +21,7 @@ public interface Employee {
 	public int calculateSalary();
 	
 	//employee benefit
-	public void benefitLayout();
+	public void benefitLayout(int choice);
 	
 	
 

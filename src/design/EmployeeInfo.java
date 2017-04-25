@@ -1,6 +1,8 @@
 package design;
 
-public class EmployeeInfo{
+import java.util.Scanner;
+
+public class EmployeeInfo extends CnnPolitics implements Employee {
 	
  /*This class can be implemented from Employee interface then add additional methods in EmployeeInfo class.
  * Also, Employee interface can be implemented into an abstract class.So create an Abstract class
@@ -13,11 +15,14 @@ public class EmployeeInfo{
  *
  */
 
-	/*
+    /*
 	 * declare few static and final fields and some non-static fields
 	 */
-	static String companyName;
-	
+    static String company_Name;
+    public static final String company_Founder = "Bolton";
+    public String company_CEO = "Micheal";
+    public String company_location;
+
 	/*
 	 * You must implement the logic for below 2 methods and 
 	 * following 2 methods are prototype as well for other methods need to be design,
@@ -28,13 +33,28 @@ public class EmployeeInfo{
 	 * you must have multiple constructor.
 	 * Must implement below constructor.
 	 */
-	public EmployeeInfo(int employeeId){
-		
-	}
-    public EmployeeInfo(String name, int employeeId){
-		
-	}
-	
+
+    public EmployeeInfo(String company_CEO) {
+        this.company_CEO = company_CEO;
+    }
+
+    public EmployeeInfo(String company_CEO, String company_location) {
+        this.company_CEO = company_CEO;
+        this.company_location = company_location;
+    }
+
+    public static String getCompany_Name() {
+        return company_Name;
+    }
+
+    public static void setCompanyName(String companyName) {
+        EmployeeInfo.company_Name = companyName;
+    }
+
+    public static String getCompanyFounder() {
+        return company_Founder;
+    }
+
 	/*
 	 * This methods should calculate Employee bonus based on salary and performance.
 	 * Then it will return the total yearly bonus. So you need to implement the logic.
@@ -43,10 +63,21 @@ public class EmployeeInfo{
 	 * So you probably need to send 2 arguments.
 	 * 
 	 */
-	public static int calculateEmployeeBonus(){
-		int total=0;
-		return total;
-	}
+
+    public static int calculateEmployeeBonus() {
+        int total = 0;
+        int salary = 50000;
+        int bestPerformance = 10 / 100;
+        int averagePerformance = 8 / 100;
+        if (bestPerformance > averagePerformance) {
+            total = salary / bestPerformance;
+            System.out.println("Employee Best performance bonus:" + (total));
+        } else
+            total = salary / averagePerformance;
+        System.out.println("Employee average performance bonus:" + (total));
+
+        return total;
+    }
 	
 	/*
 	 * This methods should calculate Employee Pension based on salary and numbers of years with the company.
@@ -55,8 +86,110 @@ public class EmployeeInfo{
 	 * So you probably need to send 2 arguments.
 	 * 
 	 */
-	public static int calculateEmployeePension(){
-		int total=0;
-		return total;
-	}
+
+    public static int calculateEmployeePension() {
+        int total = 0;
+        int salary = 50000;
+        int firstYearWork = 1;
+        int secondYearWork = 2;
+        int firatYearPension = 5 / 100;
+        int secondYearPension = 10 / 100;
+        if (secondYearWork > firstYearWork && secondYearPension > firatYearPension) {
+            total = salary / secondYearPension;
+            System.out.println("Second year pension would be " + total);
+        } else
+            total = salary / firatYearPension;
+        System.out.println("First year pension would be " + total);
+        return total;
+    }
+
+    @Override
+    public int employeeId() {
+        int employee_id = 8;
+        while (employee_id != 0) {
+            System.out.println(employeeId());
+        }
+        return 0;
+    }
+
+    @Override
+    public String employeeName() {
+        String employee_name = "Steve";
+        do {
+            System.out.println("Employee Name " + employee_name);
+        } while (employee_name == "Steve");
+        return null;
+    }
+
+    @Override
+    public void assignDepartment() {
+        String department = "Finance";
+        if ("Finance".equals(department)) {
+            System.out.println("Hudas working department " + department);
+        } else if ("Accounting".equals(department)) {
+            System.out.println("Sharif working department " + department);
+        } else if ("Humen Resource".equals(department)) {
+            System.out.println("Kafil working department " + department);
+        } else if ("Management".equals(department)) {
+            System.out.println("Lilis working department " + department);
+        } else if("Maintenance".equals(department)) {
+            System.out.println("Cinkun working department " + department);
+        }
+    }
+
+    @Override
+    public int calculateSalary() {
+        double workingHours = 0, rate = 50, overTime, total;
+        Scanner scanner = new Scanner(System.in);
+        workingHours = scanner.nextInt();
+        if (workingHours > 32 && workingHours < 40) {
+            total = workingHours * rate;
+        } else if (workingHours > 40) {
+            overTime = workingHours -= 40;
+            total = workingHours * rate + overTime * 1.5;
+        }
+        return 0;
+    }
+
+    @Override
+    public void benefitLayout(int choice) {
+
+        System.out.println("CNN employees benifit include: 1, Medical , 401K, Employee Discount, Time off, Educational Assistent");
+
+        String benefits = " ";
+
+        switch (choice) {
+            case 1:
+                benefits = "Health Insurance";
+                System.out.println("$10 Generic co-pay\n" +
+                        "$20 Formulary co-pay\n" +
+                        "$35 Non-Formulary co-pay");
+                break;
+            case 2:
+                benefits = "Dental Insurance";
+                System.out.println("Twice-yearly oral exams, " +
+                        "x-rays every 36 months, and preventative treatment are all 100% covered. Other procedures " +
+                        "are covered under a 50-80% co-insurance feature of the plan design. For a complete summary of dental benefits,");
+                break;
+            case 3:
+                benefits = "Vision Insurance";
+                System.out.println("Cobham provides safety glasses free of charge to those \n" +
+                        "employees who work in areas that require them.");
+                break;
+            case 4:
+                benefits = "Flexible Spending Accounts (FSA)";
+                System.out.print("FSAs allow employees to pay for certain medical expenses and/or childcare costs on a pre-tax basis. " +
+                        "FSAs are one of the best tax breaks available. When you reduce your tax liability, you increase your disposable income.");
+                break;
+            default:
+                benefits = "Educational Assistance";
+                System.out.println("CNN offer a tuition reimbursement program that covers undergraduate and graduate programs.");
+                break;
+        }
+    }
+
+    @Override
+    public void usaPolitics() {
+        System.out.println("Physics theory is vital political issue");
+    }
 }

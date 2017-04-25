@@ -65,16 +65,13 @@ public class Sort {
     }
     
 
-    public int [] mergeSort(int [] array){
+    public int [] mergeSort(int [] array) {
         final long startTime = System.currentTimeMillis();
-        int [] list = array;
-        //implement here
-        
-        
-
+        int[] list = array;
+        int[] a;
         return list;
+
     }
-    
 
     public int [] quickSort(int [] array){
         int [] list = array;

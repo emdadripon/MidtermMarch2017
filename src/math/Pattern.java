@@ -1,5 +1,10 @@
 package math;
 
+import databases.ConnectDB;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pattern {
 
 	public static void main(String[] args) {
@@ -9,11 +14,31 @@ public class Pattern {
 		 * Use any databases[MongoDB, Oracle, MySql] to store data and retrieve data.
 		 *
 		 */
-		
 
-		
-		
-		
+		int[] array = new int[100];
+         for(int i = 1; i<=array.length; i++) {
 
+
+			 for (int j = i; j >= 1; j--) {
+				 System.out.print(j + ",");
+				 j--;
+			 }
+
+			 System.out.println();
+			 ConnectDB connectDB = new ConnectDB();
+
+			 List<String> lowestValue = new ArrayList<String>();
+			 try {
+				 connectDB.InsertDataFromArryToMySql(array, "tbl_lowestNumber", "column_lowestNumber");
+				 lowestValue = connectDB.readDataBase("tbl_lowestNumber", "column_lowestNumber");
+
+			 } catch (Exception e) {
+				 e.printStackTrace();
+			 }
+			 System.out.println("Data is reading from the Table (tbl_primenumber) and displaying to the console");
+			 for (String st : lowestValue) {
+				 System.out.println(st);
+			 }
+		 }
 	}
 }

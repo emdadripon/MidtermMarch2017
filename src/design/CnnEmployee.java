@@ -14,6 +14,12 @@ public class CnnEmployee {
 	 *
 	 **/
 	public static void main(String[] args) {
+
+		EmployeeInfo employeeInfo = new EmployeeInfo(EmployeeInfo.company_Founder);
+
+		Employee employee = new EmployeeInfo(" ", "");
+
+		CnnPolitics.chinaPolitics();
 		
 
 

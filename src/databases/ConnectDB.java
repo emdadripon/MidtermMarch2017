@@ -5,6 +5,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import datastructure.UseArrayList;
 import org.bson.Document;
 
 import java.io.FileInputStream;
@@ -53,6 +54,27 @@ public class ConnectDB {
 
         return mongoDatabase;
     }
+    public void insertionSort(int[] Array,String tableName, String columnName)throws IOException, SQLException, ClassNotFoundException{
+
+        UseArrayList  ual = new UseArrayList();
+
+        try {
+            connectToMySql();
+            for(int n=0; n<Array.length; n++){
+                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+columnName+" ) VALUES(?)");
+                ps.setInt(1,Array[n]);
+                ps.executeUpdate();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
     public List<String> readDataBase(String tableName, String columnName)throws Exception{
         List<String> data = new ArrayList<String>();
 
@@ -94,6 +116,8 @@ public class ConnectDB {
 
     public void InsertDataFromArryToMySql(int [] ArrayData,String tableName, String columnName)
     {
+        UseArrayList  ual = new UseArrayList();
+
         try {
             connectToMySql();
             for(int n=0; n<ArrayData.length; n++){
@@ -244,7 +268,7 @@ public class ConnectDB {
     }
 
     public static void main(String[] args)throws IOException, SQLException, ClassNotFoundException {
-
+        /*
         insertProfileToMySql("profile","name", "id");
         List<User> list = readFromMySql();
         for(User user:list){
@@ -252,7 +276,7 @@ public class ConnectDB {
         }
         String message = insertToMongoDB(new User("Huda ParkingIssue", 3599));
         List<User> user = readFromMongoDB();
-
+        */
     }
 
 }

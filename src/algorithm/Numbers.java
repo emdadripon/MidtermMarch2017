@@ -1,4 +1,8 @@
 package algorithm;
+import databases.ConnectDB;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /*
@@ -14,7 +18,7 @@ public class Numbers {
 	 */
 
 	public static void main(String[] args) {
-		
+
 		int [] num = new int[10000];
 		
 		Random rand = new Random();
@@ -28,6 +32,19 @@ public class Numbers {
 		Sort algo = new Sort();
 		algo.selectionSort(num);
         Sort.printSortedArray(num);
+		ConnectDB connectDB = new ConnectDB();
+		List<String> Value = new ArrayList<String>();
+		try {
+			connectDB.InsertDataFromArryToMySql(num, "tbl_selectionsort", "column_selectionsort");
+			Value = connectDB.readDataBase("tbl_selectionsort", "column_selectionsort");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Data is reading from the Table (tbl_primenumber) and displaying to the console");
+		for (String st : Value) {
+			System.out.println(st);
+		}
 		long selectionSortExecutionTime = algo.executionTime;
 		System.out.println("Total Execution Time of "+ num.length + " numbers in Selection Sort take: " + selectionSortExecutionTime + " milli sec");
 

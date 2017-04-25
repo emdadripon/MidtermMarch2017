@@ -1,5 +1,7 @@
 package datastructure;
 
+import databases.ConnectDB;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -24,6 +26,7 @@ public class UseArrayList {
 		while(it.hasNext()){
 			System.out.println(it.next());
 		}
+		ConnectDB connectDB = new ConnectDB();
 
 	}
 
