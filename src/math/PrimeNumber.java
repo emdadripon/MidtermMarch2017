@@ -19,7 +19,7 @@ public class PrimeNumber {
 		 */
 		long startTime = System.currentTimeMillis();
 		int numberOfPrimeNumber = 0;
-		int[] array  = new int[1000000];
+		int[] array  = new int[10];
 
 		for(int i = 2; i<array.length; i++) {
 			if (isCheckingByCube(i)) {
@@ -33,17 +33,17 @@ public class PrimeNumber {
 		System.out.println(totalTime);
         ConnectDB connectDB = new ConnectDB();
 
-        List<String> lowestValue = new ArrayList<String>();
+        List<String> primeNumber = new ArrayList<String>();
         try {
 
             connectDB.InsertDataFromArryToMySql(array, "tbl_PrimeNumber", "column_NumberOfPrime");
-            lowestValue = connectDB.readDataBase("tbl_PrimeNumber", "column_NumberOfPrime");
+            primeNumber = connectDB.readDataBase("tbl_PrimeNumber", "column_NumberOfPrime");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         System.out.println("Data is reading from the Table (tbl_PrimeNumber) and displaying to the console");
-        for (String st : lowestValue) {
+        for (String st : primeNumber) {
             System.out.println(st);
         }
 	}

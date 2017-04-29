@@ -49,7 +49,7 @@ public class ConnectDB {
     }
     public static MongoDatabase connectToMongoDB() {
         MongoClient mongoClient = new MongoClient();
-        mongoDatabase = mongoClient.getDatabase("students");
+        mongoDatabase = mongoClient.getDatabase("ArrayList");
         System.out.println("Mongo Database Connected");
 
         return mongoDatabase;
@@ -114,7 +114,7 @@ public class ConnectDB {
         return dataList;
     }
 
-    public void InsertDataFromArryToMySql(int [] ArrayData,String tableName, String columnName)
+    public void InsertDataFromArryToMySql(int [] ArrayData, String tableName, String columnName)
     {
         UseArrayList  ual = new UseArrayList();
 
@@ -122,7 +122,7 @@ public class ConnectDB {
             connectToMySql();
             for(int n=0; n<ArrayData.length; n++){
                 ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+columnName+" ) VALUES(?)");
-                ps.setInt(1,ArrayData[n]);
+                ps.setInt(1,(ArrayData[n]));
                 ps.executeUpdate();
             }
 
@@ -274,9 +274,11 @@ public class ConnectDB {
         for(User user:list){
             System.out.println(user.getName()+ " " + user.getId());
         }
-        String message = insertToMongoDB(new User("Huda ParkingIssue", 3599));
-        List<User> user = readFromMongoDB();
         */
+        String message = insertToMongoDB(new User("Huda", 3599));
+        List<User> user = readFromMongoDB();
+
+
     }
 
 }

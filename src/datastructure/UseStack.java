@@ -1,6 +1,10 @@
 package datastructure;
 
+import databases.ConnectDB;
+
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Stack;
 
 public class UseStack {
@@ -29,6 +33,20 @@ public class UseStack {
 		Iterator it = stack.iterator();
 		while (it.hasNext()){
 			System.out.println(it.next());
+			ConnectDB connectDB = new ConnectDB();
+
+			List<String> lowestValue = new ArrayList<String>();
+			try {
+				connectDB.InsertDataFromStringToMySql(String.valueOf(stack), "tbl_stack", "column_stack");
+				lowestValue = connectDB.readDataBase("tbl_stack", "column_stack");
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println("Data is reading from the Table (tbl_stack) and displaying to the console");
+			for (String st : lowestValue) {
+				System.out.println(st);
+			}
 		}
 	}
 }

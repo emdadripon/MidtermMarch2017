@@ -18,9 +18,9 @@ public class EmployeeInfo extends CnnPolitics implements Employee {
     /*
 	 * declare few static and final fields and some non-static fields
 	 */
-    static String company_Name;
+    static String company_Name = "CNN";
     public static final String company_Founder = "Bolton";
-    public String company_CEO = "Micheal";
+    public static String company_CEO = "Micheal";
     public String company_location;
 
 	/*
@@ -43,7 +43,7 @@ public class EmployeeInfo extends CnnPolitics implements Employee {
         this.company_location = company_location;
     }
 
-    public static String getCompany_Name() {
+    public static String getCompany_Name(String company_Name) {
         return company_Name;
     }
 
@@ -190,6 +190,6 @@ public class EmployeeInfo extends CnnPolitics implements Employee {
 
     @Override
     public void usaPolitics() {
-        System.out.println("Physics theory is vital political issue");
+        System.out.println("Physics theory is vital political issue of Americal politics history");
     }
 }

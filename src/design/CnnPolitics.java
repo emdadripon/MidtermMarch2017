@@ -6,6 +6,6 @@ package design;
 public abstract class CnnPolitics {
     public abstract void usaPolitics();
     public static void chinaPolitics(){
-        System.out.println("USA consumer product is gaining populerity of chinise politics");
+        System.out.println("USA consumer product is gaining popularity of chinise politics");
     }
 }

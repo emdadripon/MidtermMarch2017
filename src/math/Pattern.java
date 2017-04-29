@@ -1,10 +1,5 @@
 package math;
 
-import databases.ConnectDB;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Pattern {
 
 	public static void main(String[] args) {
@@ -16,8 +11,14 @@ public class Pattern {
 		 */
 
 		int[] array = new int[100];
-         for(int i = 1; i<=array.length; i++) {
+         for(int i = 90; i<=array.length; i++) {
+          for (int j = i; j<=i; j--) {
+          	j--;
 
+			  System.out.print(j + " ");
+		  }
+		  System.out.print(" ");
+         	/*
 
 			 for (int j = i; j >= 1; j--) {
 				 System.out.print(j + ",");
@@ -35,10 +36,12 @@ public class Pattern {
 			 } catch (Exception e) {
 				 e.printStackTrace();
 			 }
-			 System.out.println("Data is reading from the Table (tbl_primenumber) and displaying to the console");
+			 System.out.println("Data is reading from the Table (tbl_Patternnumber) and displaying to the console");
 			 for (String st : lowestValue) {
 				 System.out.println(st);
 			 }
+			 */
 		 }
+
 	}
 }

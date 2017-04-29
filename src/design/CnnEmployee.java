@@ -17,8 +17,14 @@ public class CnnEmployee {
 
 		EmployeeInfo employeeInfo = new EmployeeInfo(EmployeeInfo.company_Founder);
 
-		Employee employee = new EmployeeInfo(" ", "");
 
+		EmployeeInfo.calculateEmployeeBonus();
+		Employee employee = new EmployeeInfo(" jj", "");
+		//employee.employeeId();
+		//employee.employeeName();
+		//employee.assignDepartment();
+		//employee.calculateSalary();
+        //employee.benefitLayout(2);
 		CnnPolitics.chinaPolitics();
 		
 

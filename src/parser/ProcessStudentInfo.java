@@ -39,42 +39,40 @@ public class ProcessStudentInfo {
 				String pathQTP ="/Users/smhoque/Documents/MidtermMarch2017/src/parser/qtp.xml";
 				//String pathQtp = System.getProperty("user.dir") + "/src/parser/qtp.xml";
 				String tag = "id";
-
 				//Declare a Map with List<String> into it.
-				Map<String, List<String>> map =  new LinkedHashMap<String, List<String>>();
+				Map<String, List<Student>> studentList =  new LinkedHashMap<>();
 				
 				
 				/*Declare 2 ArrayList with Student data type to store Selenium student into one of the ArrayList and
 				  Qtp student into another ArrayList. */
-				ArrayList<String> selenium = new ArrayList<String>();
-				selenium.add("Sharif Uddin");
-				selenium.add("Asif Roni");
-				selenium.add("Huda");
-				selenium.add("Kafil");
-				selenium.add("Aisha");
+				List<Student> seleniumStudent = new ArrayList<Student>();
 
-				ArrayList<String> qtp = new ArrayList<String>();
-				qtp.add("Paul");
-				qtp.add("Oathman");
-				qtp.add("Rajib");
-				qtp.add("Sm");
-				qtp.add("Bilal");
+				List<Student> qtpStudent = new ArrayList<Student>();
+
 				
 				
 				//Create XMLReader object.
 				XmlReader xmlReader = new XmlReader();
+                qtpStudent = xmlReader.parseData(tag, pathQTP);
 
-				
 				//Parse Data using parseData method and then store data into Selenium ArrayList.
-
+				seleniumStudent  = xmlReader.parseData(tag, pathSelenium);
 				//Parse Data using parseData method and then store data into Qtp ArrayList.
-
+               xmlReader.parseData("id", "pathQTP");
 				//add Selenium ArrayList data into map.
-			      map.put("id", selenium);
+			      studentList.put("id", seleniumStudent);
 				//add Qtp ArrayList data into map.
 		
-		      	map.put("id", qtp);
+		      	studentList.put("id", qtpStudent);
 				//Retrieve map data and display output.
+				for(Map.Entry<String, List<Student>> map:studentList.entrySet()){
+					List<Student> studentName = map.getValue();
+					System.out.println(map.getKey());
+					for(Student student:studentName){
+						System.out.println(" " + student);
+
+					}
+				}
 
 				
 			}

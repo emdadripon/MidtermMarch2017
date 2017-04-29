@@ -4,6 +4,7 @@ import databases.ConnectDB;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class UseArrayList {
 
@@ -27,9 +28,20 @@ public class UseArrayList {
 		while(it.hasNext()){
 			System.out.println(it.next());
 		}
+		ConnectDB connectDB = new ConnectDB();
+		List<String> mergeValue = new ArrayList<String>();
+		try {
 
-		ConnectDB.connectToMongoDB();
-        //ConnectDB.insertToMongoDB();
+			//connectDB.InsertDataFromArryToMySql(Array, "tbl_mergesort", "column_mergesort");
+			mergeValue = connectDB.readDataBase("tbl_mergesort", "column_mergesort");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Data is reading from the Table (tbl_mergesort) and displaying to the console");
+		for (String st : mergeValue) {
+			System.out.println(st);
+		}
 	}
 
 }
