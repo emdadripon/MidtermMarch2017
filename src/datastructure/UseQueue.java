@@ -1,8 +1,8 @@
 package datastructure;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import databases.ConnectDB;
+
+import java.util.*;
 
 public class UseQueue {
 
@@ -12,6 +12,7 @@ public class UseQueue {
 		 * Use For Each loop and while loop with Iterator to retrieve data.
 		 * 
 		 */
+		ConnectDB connectDB = new ConnectDB();
 		Queue<String> queue = new LinkedList<String>();
 		queue.add("Runa Lila");
 		queue.add("Sabina Yasmin");
@@ -31,5 +32,18 @@ public class UseQueue {
 		while (it.hasNext()){
 			System.out.println(it.next());
 		}
+		List<String> nameList = new ArrayList<String>();
+		try {
+			connectDB.InsertDataFromQueueToMySql(queue, "tbl_Queue", "column_Queue");
+			nameList = connectDB.readDataBase("tbl_Queue", "column_Queue");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Data is reading from the Table (tbl_Queue) and displaying to the console");
+		for (String st : nameList) {
+			System.out.println(st);
+		}
+
 	}
 }

@@ -62,8 +62,12 @@ public class XmlReader {
 	//This convert method need to be implemented.
 	public String convertIntToChar(String score){
 		String grade = "";
+		char[]  stringArray;
+		stringArray = grade.toCharArray();
 		
-		
+		for(int i = 0; i<stringArray.length; i++){
+			System.out.print(stringArray[i]);
+		}
 		return grade;	
 	}
 	

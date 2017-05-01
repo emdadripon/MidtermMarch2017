@@ -1,5 +1,7 @@
 package datastructure;
 
+import databases.ConnectDB;
+
 import java.util.*;
 
 public class UseMap {
@@ -12,6 +14,7 @@ public class UseMap {
 		 *
 		 * Use any databases[MongoDB, Oracle, MySql] to store data and retrieve data.
 		 */
+		ConnectDB connectDB = new ConnectDB();
 		List<String> ListOfAccountingBook = new ArrayList<String>();
 		ListOfAccountingBook.add("The Wealth Of Nations");
 		ListOfAccountingBook.add("Rice Dad Poor Dad");
@@ -43,6 +46,20 @@ public class UseMap {
 			}
 			System.out.println();
 		   }
+
+		List<String> nameList = new ArrayList<String>();
+		try {
+			connectDB.InsertDataFromMapToMySql((List<String>) ListOfBook, "tbl_Map", "column_Map");
+			nameList = connectDB.readDataBase("tbl_Map", "column_Map");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Data is reading from the Table (tbl_Map) and displaying to the console");
+		for (String st : nameList) {
+			System.out.println(st);
+		}
+
 
 		}
 	}

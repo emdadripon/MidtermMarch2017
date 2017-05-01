@@ -1,8 +1,8 @@
 package datastructure;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Scanner;
+import databases.ConnectDB;
+
+import java.util.*;
 
 public class UseLinkedList {
 
@@ -12,6 +12,7 @@ public class UseLinkedList {
 		 * Use For Each loop and while loop with Iterator to retrieve data.
 		 * 
 		 */
+		ConnectDB connectDB = new ConnectDB();
 		LinkedList<String> list = new LinkedList<String>();
 		System.out.println("Please enter numeric number size of list");
 
@@ -42,6 +43,18 @@ public class UseLinkedList {
 		System.out.println("Retriving elements by enhance for loop");
 		for(String course:list){
 			System.out.println(course);
+		}
+		List<String> nameList = new ArrayList<String>();
+		try {
+			connectDB.InsertDataFromArrayListToMySql(list, "tbl_LinkedList", "column_LinkedList");
+			nameList = connectDB.readDataBase("tbl_LinkedList", "column_LinkedList");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Data is reading from the Table (tbl_selectionsort) and displaying to the console");
+		for (String st : nameList) {
+			System.out.println(st);
 		}
 	}
 }

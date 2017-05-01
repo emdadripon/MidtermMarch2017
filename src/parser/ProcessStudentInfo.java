@@ -34,10 +34,10 @@ public class ProcessStudentInfo {
 		 */
 			public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 				//Path of XML data to be read.
-				String pathSelenium = "/Users/smhoque/Documents/MidtermMarch2017/src/parser/selenium.xml";
-				//String pathSelenium  = System.getProperty("user.dir") +"/src/parser/selenium.xml";
-				String pathQTP ="/Users/smhoque/Documents/MidtermMarch2017/src/parser/qtp.xml";
-				//String pathQtp = System.getProperty("user.dir") + "/src/parser/qtp.xml";
+				//String pathSelenium = "/Users/smhoque/Documents/MidtermMarch2017/src/parser/selenium.xml";
+				String pathSelenium  = System.getProperty("user.dir") +"/src/parser/selenium.xml";
+				//String pathQTP ="/Users/smhoque/Documents/MidtermMarch2017/src/parser/qtp.xml";
+				String pathQtp = System.getProperty("user.dir") + "/src/parser/qtp.xml";
 				String tag = "id";
 				//Declare a Map with List<String> into it.
 				Map<String, List<Student>> studentList =  new LinkedHashMap<>();
@@ -53,7 +53,7 @@ public class ProcessStudentInfo {
 				
 				//Create XMLReader object.
 				XmlReader xmlReader = new XmlReader();
-                qtpStudent = xmlReader.parseData(tag, pathQTP);
+                qtpStudent = xmlReader.parseData(tag, pathQtp);
 
 				//Parse Data using parseData method and then store data into Selenium ArrayList.
 				seleniumStudent  = xmlReader.parseData(tag, pathSelenium);

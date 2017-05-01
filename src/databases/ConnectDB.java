@@ -12,9 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * Created by mrahman on 04/22/17.
@@ -114,7 +112,7 @@ public class ConnectDB {
         return dataList;
     }
 
-    public void InsertDataFromArryToMySql(int [] ArrayData, String tableName, String columnName)
+    public void InsertDataFromArryToMySql(int[] ArrayData, String tableName, String columnName)
     {
         UseArrayList  ual = new UseArrayList();
 
@@ -151,6 +149,7 @@ public class ConnectDB {
         }
     }
 
+
     public List<String> directDatabaseQueryExecute(String passQuery,String dataColumn)throws Exception{
         List<String> data = new ArrayList<String>();
 
@@ -167,7 +166,62 @@ public class ConnectDB {
         return data;
     }
 
-    public void InsertDataFromArrayListToMySql(List<Object> list,String tableName, String columnName)
+    public void InsertDataFromArrayListToMySql(List<String> list,String tableName, String columnName)
+    {
+        try {
+            connectToMySql();
+            for(Object st:list){
+                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+columnName+" ) VALUES(?)");
+                ps.setObject(1,st);
+                ps.executeUpdate();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void InsertDataFromQueueToMySql(Queue<String> list, String tableName, String columnName)
+    {
+        try {
+            connectToMySql();
+            for(Object st:list){
+                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+columnName+" ) VALUES(?)");
+                ps.setObject(1,st);
+                ps.executeUpdate();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public void InsertDataFromStackToMySql(List<String> list,String tableName, String columnName)
+    {
+        try {
+            connectToMySql();
+            for(Object st:list){
+                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+columnName+" ) VALUES(?)");
+                ps.setObject(1,st);
+                ps.executeUpdate();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public void InsertDataFromMapToMySql(List<String> list,String tableName, String columnName)
     {
         try {
             connectToMySql();

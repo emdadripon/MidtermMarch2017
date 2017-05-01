@@ -16,6 +16,7 @@ public class UseArrayList {
 		 * Store all the sorted data into one of the databases.
 		 * 
 		 */
+		ConnectDB connectDB = new ConnectDB();
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("Steve");
 		list.add("Dev");
@@ -27,21 +28,22 @@ public class UseArrayList {
 		Iterator it = list.iterator();
 		while(it.hasNext()){
 			System.out.println(it.next());
-		}
-		ConnectDB connectDB = new ConnectDB();
-		List<String> mergeValue = new ArrayList<String>();
-		try {
 
-			//connectDB.InsertDataFromArryToMySql(Array, "tbl_mergesort", "column_mergesort");
-			mergeValue = connectDB.readDataBase("tbl_mergesort", "column_mergesort");
+		}
+        List<String> nameList = new ArrayList<String>();
+        try {
+            connectDB.InsertDataFromArrayListToMySql(list, "tbl_ArrayList", "column_ArrayList");
+            nameList = connectDB.readDataBase("tbl_ArrayList", "column_ArrayList");
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println("Data is reading from the Table (tbl_mergesort) and displaying to the console");
-		for (String st : mergeValue) {
-			System.out.println(st);
-		}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Data is reading from the Table (tbl_ArrayList) and displaying to the console");
+        for (String st : nameList) {
+            System.out.println(st);
+        }
+
+
 	}
 
 }

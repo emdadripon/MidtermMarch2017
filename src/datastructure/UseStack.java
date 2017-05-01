@@ -37,7 +37,7 @@ public class UseStack {
 
 			List<String> lowestValue = new ArrayList<String>();
 			try {
-				connectDB.InsertDataFromStringToMySql(String.valueOf(stack), "tbl_stack", "column_stack");
+				connectDB.InsertDataFromStackToMySql(stack, "tbl_stack", "column_stack");
 				lowestValue = connectDB.readDataBase("tbl_stack", "column_stack");
 
 			} catch (Exception e) {
